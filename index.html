@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Facts</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff6b6b, #f7b733);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+        }
+
+        .fact-display {
+            margin: 20px 0;
+            font-size: 1.5em;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff6b6b;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #f7b733;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mars Facts</h1>
+        <div id="factDisplay" class="fact-display">Click the button to see a fact!</div>
+        <button id="factButton">Show Random Fact</button>
+    </div>
+    <script>
+        const marsFacts = [
+            "Mars is the fourth planet from the Sun.",
+            "Mars is often referred to as the 'Red Planet' due to its reddish appearance.",
+            "The atmosphere of Mars is about 95% carbon dioxide.",
+            "Mars has the largest volcano in the solar system, Olympus Mons, which is about 13.6 miles (22 kilometers) high.",
+            "Mars has two small moons named Phobos and Deimos.",
+            "A day on Mars, known as a sol, is approximately 24.6 hours long.",
+            "Mars has seasons similar to Earth due to its axial tilt of 25 degrees.",
+            "The average temperature on Mars is about -80 degrees Fahrenheit (-62 degrees Celsius).",
+            "Mars has the largest dust storms in the solar system, which can cover the entire planet.",
+            "Mars was once believed to have liquid water on its surface, and evidence of ancient riverbeds and polar ice caps supports this theory."
+        ];
+
+        const factDisplay = document.getElementById('factDisplay');
+        const factButton = document.getElementById('factButton');
+
+        factButton.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * marsFacts.length);
+            factDisplay.textContent = marsFacts[randomIndex];
+            factDisplay.style.opacity = 0; // Start with opacity 0 for animation
+            setTimeout(() => {
+                factDisplay.style.opacity = 1; // Fade in effect
+            }, 50); // Small delay to allow opacity change
+        });
+    </script>
+</body>
+</html>
